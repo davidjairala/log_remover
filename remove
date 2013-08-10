@@ -19,7 +19,7 @@ class Remover
   end
 
   def files
-    Dir["#{@dir}/**/*.log"]
+    @files ||= Dir["#{@dir}/**/*.log"]
   end
 
 end
