@@ -1,0 +1,28 @@
+#!/usr/bin/env ruby
+
+class Remover
+
+  def initialize(dir)
+    @dir = dir
+  end
+
+  def delete!
+    puts "deleting log files in #{@dir}"
+    puts "found: #{files.size} files"
+
+    files.each do |file|
+      puts "** deleting: #{file}"
+      File.delete(file)
+    end
+
+    puts "done!"
+  end
+
+  def files
+    Dir["#{@dir}/**/*.log"]
+  end
+
+end
+
+rm = Remover.new(%x[pwd].chomp)
+rm.delete!
